@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Site</title>
+  <link rel="stylesheet" href="static/bootstrap.min.css">
+  <script defer src="static/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form id="process-amt-form" class="my-3 p-3 border bg-light">
+            <div class="row">
+                <label for="process-amount" class="col-sm-4 col-form-label">Enter amount of processes:</label>
+                <div class="col-sm-6 col-lg-4 ms-auto">
+                  <input type="number" class="form-control" id="process-amount" min="1" max="8" required>
+                </div>
+                <div class="col-sm-2 col-lg-1">
+                    <button id="submit-amt" type="button" class="btn btn-primary w-100">submit</button>
+                  </div>
+            </div>
+        </form>
+
+        <form id="input-processes" class="my-3 p-3 border bg-light d-none">
+            <div id="processes-fields"></div>
+            <div id="eval-field" class="row">
+              <div class="col-sm-6">
+                <select title="method" name="schedulemethod" id="schedule-method" class="form-select d-inline col-sm-6">
+                  <option selected>--Choose Scheduling Method--</option>
+                  <option value="fcfs">First Come First Serve</option>
+                  <option value="sjf">Shortest Job First</option>
+                  <option value="pr">Priority</option>
+                  <option value="rr">Round Robin</option>
+                </select>
+              </div>
+              <div class="col-sm-6">
+                <button class="col-sm-4 btn btn-primary w-100">Evaluate</button>
+              </div>
+            </div>
+        </form>
+
+        <div id="fcfs" class="d-none">
+          <hr>
+          <table class="table">
+            <h1>First Come First Serve</h1>
+            <thead>
+              <tr>
+                <th scope="col">Process ID</th>
+                <th scope="col">Arrival</th>
+                <th scope="col">Burst</th>
+                <th scope="col">Turnaround</th>
+              </tr>
+            </thead>
+            <tbody></tbody>            
+          </table>
+
+          <div class="my-5 d-none" id="waiting-time">
+            <div class="row mb-3">
+              <div class="col-sm-8"><strong>Total Waiting Time</strong></div>
+              <div class="col-sm-4" id="twt"><strong></strong></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8"><strong>Average Waiting Time</strong></div>
+              <div class="col-sm-4" id="awt"><strong></strong></div>
+            </div>
+          </div>          
+        </div>
+    </div>
+
+    <script type="module" src="dist/script.js"></script>
+</body>
+</html>
