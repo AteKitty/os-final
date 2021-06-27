@@ -34,6 +34,19 @@ function shortestJobFirst(processes) {
     return calculateTurnAround(processes)
 }
 
+function priority(processes) {
+    for (let i = 0; i < processes.length-1; i++) {
+        for (let j = 0; j < processes.length-1; j++) {
+            if (processes[j].priority > processes[j+1].priority) {
+                let temp = processes[j]
+                processes[j] = processes[j+1]
+                processes[j+1] = temp
+            }
+        }
+    }
+
+    return calculateTurnAround(processes)
+}
 
 
-export { firstComeFirstServe, shortestJobFirst }
+export { firstComeFirstServe, shortestJobFirst, priority }
